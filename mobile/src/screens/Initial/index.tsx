@@ -1,6 +1,8 @@
 import React from 'react';
 import { Image } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+
 import logo from '../../assets/icons/logo.png';
 
 import isafeIcon from '../../assets/icons/isafe.png';
@@ -12,6 +14,8 @@ import receiveIcon from '../../assets/icons/receive.png';
 import * as S from './styles';
 
 const Login = (): JSX.Element => {
+  const navigation = useNavigation();
+
   return (
     <S.Container>
       <S.LogoBg>
@@ -28,7 +32,9 @@ const Login = (): JSX.Element => {
               <S.InfoAgency>1234567-8</S.InfoAgency>
             </S.Info>
 
-            <S.ChangeButton>
+            <S.ChangeButton
+              onPress={() => navigation.navigate('SelectAccount')}
+            >
               <S.ChangeButtonTxt>Trocar</S.ChangeButtonTxt>
             </S.ChangeButton>
           </S.Wrapper>

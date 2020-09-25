@@ -1,4 +1,6 @@
-export default {
+import { DefaultTheme, Theme } from '@react-navigation/native';
+
+const theme = {
   name: 'default',
 
   colors: {
@@ -24,3 +26,14 @@ export default {
     bold: 'Inter_700Bold',
   },
 };
+
+export const NavigationTheme: Theme = {
+  ...DefaultTheme,
+
+  colors: {
+    ...DefaultTheme.colors,
+    text: theme.colors.text_base,
+  },
+};
+
+export default theme;

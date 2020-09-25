@@ -14,7 +14,7 @@ import {
 import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme/default';
 
-import Screen from './src/screens/Initial';
+import Stack from './src/navigation/Stack';
 
 const App = (): JSX.Element => {
   const [fontsLoaded] = useFonts({
@@ -26,7 +26,7 @@ const App = (): JSX.Element => {
 
   return fontsLoaded ? (
     <ThemeProvider theme={theme}>
-      <Screen />
+      <Stack />
       <StatusBar backgroundColor="" />
     </ThemeProvider>
   ) : (
