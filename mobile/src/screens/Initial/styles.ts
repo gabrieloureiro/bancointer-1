@@ -3,6 +3,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export const Container = styled.View`
   flex: 1;
+  background: ${props => props.theme.colors.white};
 `;
 
 export const LogoBg = styled(LinearGradient).attrs(props => ({

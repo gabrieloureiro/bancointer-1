@@ -35,7 +35,6 @@ const Stack: React.FC = () => (
             elevation: 0,
             shadowOpacity: 0,
           },
-          hea
           headerTitleAlign: 'center',
           headerTitle: 'Selecione a conta',
           headerTitleStyle: {

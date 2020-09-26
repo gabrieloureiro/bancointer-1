@@ -8,6 +8,8 @@ const theme = {
     primary: '#ED6E01',
     primary_light: '#FF8701',
 
+    remove: '#FD4F47',
+
     white: '#fff',
 
     light_gray_bg: '#F5F6FA',
