@@ -59,7 +59,9 @@ const Login = (): JSX.Element => {
           <Image source={interpagIcon} />
 
           <S.Wrapper>
-            <S.IconWrapper>
+            <S.IconWrapper
+              onPress={() => navigation.navigate('Modals', { screen: 'Pay' })}
+            >
               <Image source={payIcon} />
               <S.IconLabel>Pagar</S.IconLabel>
             </S.IconWrapper>

@@ -9,6 +9,7 @@ import { NavigationTheme } from '../styles/theme/default';
 import arrowLeftIcon from '../assets/icons/arrow-left.png';
 
 import Initial from '../screens/Initial';
+import Modals from './Modals';
 import SelectAccount from '../screens/SelectAccount';
 
 const { Navigator, Screen } = createStackNavigator();
@@ -49,6 +50,16 @@ const Stack: React.FC = () => (
           headerLeftContainerStyle: {
             marginLeft: 16,
           },
+        }}
+      />
+
+      <Screen
+        name="Modals"
+        component={Modals}
+        options={{
+          headerShown: false,
+          cardStyle: { backgroundColor: 'transparent' },
+          cardOverlayEnabled: true,
         }}
       />
     </Navigator>

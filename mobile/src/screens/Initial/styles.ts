@@ -112,7 +112,7 @@ export const LoginButtonTxt = styled.Text`
   font-size: 16px;
 `;
 
-export const IconWrapper = styled.View`
+export const IconWrapper = styled.TouchableOpacity`
   margin-left: 26px;
   align-items: center;
 `;
