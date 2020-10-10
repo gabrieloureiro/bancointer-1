@@ -14,11 +14,7 @@ import {
 
 import * as S from './styles';
 
-type DraggableModalProps = {
-  title: React.ReactNode;
-};
-
-const DraggableModal: React.FC<DraggableModalProps> = ({ title, children }) => {
+const DraggableModal: React.FC = ({ children }) => {
   const positionY = useSharedValue(0);
 
   const { height } = useWindowDimensions();
@@ -60,10 +56,9 @@ const DraggableModal: React.FC<DraggableModalProps> = ({ title, children }) => {
     <S.Container>
       <PanGestureHandler onGestureEvent={handleGestureevent}>
         <S.DraggableContainer style={draggableContainerAnimatedStyle}>
-          <S.Header>
+          <S.Wrapper>
             <S.Drag />
-            {title}
-          </S.Header>
+          </S.Wrapper>
 
           {children}
         </S.DraggableContainer>

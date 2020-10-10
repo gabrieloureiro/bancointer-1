@@ -9,6 +9,9 @@ export const Container = styled.SafeAreaView`
     ? `${StatusBar.currentHeight}px`
     : 0};
   background: rgba(0, 0, 0, 0.5);
+
+  flex-direction: row;
+  align-items: flex-end;
 `;
 
 export const DraggableContainer = styled(Animated.View)`
@@ -17,19 +20,18 @@ export const DraggableContainer = styled(Animated.View)`
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   overflow: hidden;
-`;
-
-export const Header = styled.View`
-  height: 66px;
-  align-items: center;
-  justify-content: center;
-  background: ${props => props.theme.colors.white};
   position: relative;
 `;
 
-export const Drag = styled.View`
+export const Wrapper = styled.View`
   position: absolute;
-  top: 8px;
+  left: 0;
+  right: 0;
+`;
+
+export const Drag = styled.View`
+  margin-top: 8px;
+  align-self: center;
   width: 32px;
   height: 4px;
   border-radius: 2px;

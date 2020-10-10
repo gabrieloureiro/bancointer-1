@@ -8,6 +8,13 @@ export const Container = styled.View`
   background: ${props => props.theme.colors.white};
 `;
 
+export const Header = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 66px;
+`;
+
 export const Camera = styled(ExpoCamera)`
   flex: 1;
 `;

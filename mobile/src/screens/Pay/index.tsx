@@ -47,7 +47,11 @@ const Pay: React.FC = () => {
   }, [animation]);
 
   return (
-    <DraggableModal title={<Image source={interpagIcon} />}>
+    <DraggableModal>
+      <S.Header>
+        <Image source={interpagIcon} />
+      </S.Header>
+
       {permission && (
         <S.Container>
           {showCamera && (
