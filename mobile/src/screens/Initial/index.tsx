@@ -57,7 +57,11 @@ const Login = (): JSX.Element => {
               <S.IconLabel>Pagar</S.IconLabel>
             </S.IconWrapper>
 
-            <S.IconWrapper>
+            <S.IconWrapper
+              onPress={() => {
+                navigation.navigate('Modals', { screen: 'Receive' });
+              }}
+            >
               <Image source={receiveIcon} />
               <S.IconLabel>Receber</S.IconLabel>
             </S.IconWrapper>
