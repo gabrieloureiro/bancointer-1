@@ -3,8 +3,9 @@ import { Image } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
-import logo from '../../assets/icons/logo.png';
+import UserInfo from '../../components/UserInfo';
 
+import logo from '../../assets/icons/logo.png';
 import isafeIcon from '../../assets/icons/isafe.png';
 import interpagIcon from '../../assets/icons/interpag.png';
 import dotsIcon from '../../assets/icons/dots.png';
@@ -24,20 +25,10 @@ const Login = (): JSX.Element => {
 
       <S.Cards>
         <S.CardLogin>
-          <S.Wrapper>
-            <S.Avatar source={{ uri: 'https://github.com/maurodesouza.png' }} />
-
-            <S.Info>
-              <S.InfoName>Mauro Antonio Aires de Souza Junior</S.InfoName>
-              <S.InfoAgency>1234567-8</S.InfoAgency>
-            </S.Info>
-
-            <S.ChangeButton
-              onPress={() => navigation.navigate('SelectAccount')}
-            >
-              <S.ChangeButtonTxt>Trocar</S.ChangeButtonTxt>
-            </S.ChangeButton>
-          </S.Wrapper>
+          <UserInfo
+            buttonText="trocar"
+            onPress={() => navigation.navigate('SelectAccount')}
+          />
 
           <S.LoginButton>
             <S.LoginButtonBg>
