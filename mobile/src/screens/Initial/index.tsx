@@ -4,11 +4,10 @@ import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import UserInfo from '../../components/UserInfo';
+import Isafe from '../../components/Isafe';
 
 import logo from '../../assets/icons/logo.png';
-import isafeIcon from '../../assets/icons/isafe.png';
 import interpagIcon from '../../assets/icons/interpag.png';
-import dotsIcon from '../../assets/icons/dots.png';
 import payIcon from '../../assets/icons/pay.png';
 import receiveIcon from '../../assets/icons/receive.png';
 
@@ -37,14 +36,7 @@ const Login = (): JSX.Element => {
           </S.LoginButton>
         </S.CardLogin>
 
-        <S.Card>
-          <Image source={isafeIcon} />
-          <S.IconWrapper>
-            <Image source={dotsIcon} />
-
-            <S.IconLabel>Gerar</S.IconLabel>
-          </S.IconWrapper>
-        </S.Card>
+        <Isafe />
 
         <S.Card>
           <Image source={interpagIcon} />
