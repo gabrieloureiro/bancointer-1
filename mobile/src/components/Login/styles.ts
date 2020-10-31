@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export const Container = styled.View`
   background: ${props => props.theme.colors.light_gray_bg};
-  padding: 26px 16px 16px;
+  padding: 26px 16px 20px;
   border-radius: 8px;
 `;
 
