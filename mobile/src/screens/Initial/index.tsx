@@ -3,7 +3,7 @@ import { Image } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
-import UserInfo from '../../components/UserInfo';
+import Login from '../../components/Login';
 import Isafe from '../../components/Isafe';
 
 import logo from '../../assets/icons/logo.png';
@@ -13,7 +13,7 @@ import receiveIcon from '../../assets/icons/receive.png';
 
 import * as S from './styles';
 
-const Login = (): JSX.Element => {
+const Initial = (): JSX.Element => {
   const navigation = useNavigation();
 
   return (
@@ -23,18 +23,7 @@ const Login = (): JSX.Element => {
       </S.LogoBg>
 
       <S.Cards>
-        <S.CardLogin>
-          <UserInfo
-            buttonText="trocar"
-            onPress={() => navigation.navigate('SelectAccount')}
-          />
-
-          <S.LoginButton>
-            <S.LoginButtonBg>
-              <S.LoginButtonTxt>Entrar</S.LoginButtonTxt>
-            </S.LoginButtonBg>
-          </S.LoginButton>
-        </S.CardLogin>
+        <Login />
 
         <Isafe />
 
@@ -64,4 +53,4 @@ const Login = (): JSX.Element => {
   );
 };
 
-export default Login;
+export default Initial;
