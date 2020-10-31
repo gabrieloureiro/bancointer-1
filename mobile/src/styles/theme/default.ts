@@ -18,6 +18,7 @@ const theme = {
 
     text_base: '#4B4E5C',
     text_light: '#727375',
+    text_input: '#9e9e9e',
     text_complement: '#8C91A9',
   },
 
