@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { BackHandler } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import {
   useSharedValue,
   withTiming,
@@ -37,10 +37,13 @@ const Login: React.FC = () => {
   }, [inputWrapperMarginTop]);
 
   const handlerBackButton = useCallback(() => {
-    if (isOpen) closeLogin();
-    else BackHandler.exitApp();
+    if (isOpen) {
+      closeLogin();
 
-    return true;
+      return true;
+    }
+
+    return false;
   }, [isOpen, closeLogin]);
 
   useEffect(() => {
@@ -50,6 +53,8 @@ const Login: React.FC = () => {
       BackHandler.removeEventListener('hardwareBackPress', handlerBackButton);
     };
   }, [handlerBackButton]);
+
+  useFocusEffect(useCallback(() => () => closeLogin(), [closeLogin]));
 
   const inputWrapperAnimation = useAnimatedStyle(() => ({
     marginTop: inputWrapperMarginTop.value,
