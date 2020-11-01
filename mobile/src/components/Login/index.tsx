@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { BackHandler } from 'react-native';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
+import { BackHandler, TextInput } from 'react-native';
 
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import {
@@ -15,17 +15,25 @@ import UserInfo from '../UserInfo';
 import * as S from './styles';
 
 const Login: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const inputWrapperMarginTop = useSharedValue(-75);
 
   const navigation = useNavigation();
+  const inputRef = useRef<TextInput>(null);
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const openLogin = useCallback(() => {
     setIsOpen(true);
 
-    inputWrapperMarginTop.value = withTiming(30, {
-      duration: 500,
-    });
+    inputWrapperMarginTop.value = withTiming(
+      30,
+      {
+        duration: 500,
+      },
+      () => {
+        inputRef.current?.focus();
+      },
+    );
   }, [inputWrapperMarginTop]);
 
   const closeLogin = useCallback(() => {
@@ -91,6 +99,7 @@ const Login: React.FC = () => {
       <S.InputWrapper style={inputWrapperAnimation}>
         <S.Label>Senha</S.Label>
         <S.Input
+          ref={inputRef}
           placeholder="Senha"
           keyboardType="default"
           autoCapitalize="none"
