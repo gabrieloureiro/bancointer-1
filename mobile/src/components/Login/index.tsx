@@ -11,6 +11,7 @@ import {
 } from 'react-native-reanimated';
 
 import UserInfo from '../UserInfo';
+import OrangeButton from '../OrangeButton';
 
 import * as S from './styles';
 
@@ -108,11 +109,7 @@ const Login: React.FC = () => {
         />
       </S.InputWrapper>
 
-      <S.LoginButton onPress={openLogin}>
-        <S.LoginButtonBg>
-          <S.LoginButtonTxt>Entrar</S.LoginButtonTxt>
-        </S.LoginButtonBg>
-      </S.LoginButton>
+      <OrangeButton onPress={openLogin}>Entrar</OrangeButton>
 
       <S.ForgotPasswordText style={forgotPasswordTextAnimation}>
         Esqueci minha senha

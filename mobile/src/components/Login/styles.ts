@@ -1,16 +1,15 @@
 import styled from 'styled-components/native';
 import Animated from 'react-native-reanimated';
 
-import { RectButton } from 'react-native-gesture-handler';
-import { LinearGradient } from 'expo-linear-gradient';
-
 export const Container = styled.View`
   background: ${props => props.theme.colors.light_gray_bg};
   padding: 26px 16px 20px;
   border-radius: 8px;
 `;
 
-export const InputWrapper = styled(Animated.View)``;
+export const InputWrapper = styled(Animated.View)`
+  margin-bottom: 35px;
+`;
 
 export const Label = styled.Text`
   font-family: ${props => props.theme.fonts.semi_bold};
@@ -34,32 +33,6 @@ export const Input = styled.TextInput.attrs(props => ({
   font-family: ${props => props.theme.fonts.medium};
   color: ${props => props.theme.colors.text_input};
   font-size: 15px;
-`;
-
-export const LoginButton = styled(RectButton)`
-  position: relative;
-  z-index: 2;
-  margin: 35px auto 0;
-  height: 48px;
-  width: 220px;
-`;
-
-export const LoginButtonBg = styled(LinearGradient).attrs(props => ({
-  colors: [props.theme.colors.primary_darken, props.theme.colors.primary_light],
-  start: [0, 0],
-  end: [1, 0],
-}))`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-`;
-
-export const LoginButtonTxt = styled.Text`
-  font-family: ${props => props.theme.fonts.semi_bold};
-  color: ${props => props.theme.colors.white};
-  text-transform: uppercase;
-  font-size: 16px;
 `;
 
 export const ForgotPasswordText = styled(Animated.Text)`
