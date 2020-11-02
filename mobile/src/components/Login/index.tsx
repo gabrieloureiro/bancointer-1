@@ -115,7 +115,14 @@ const Login: React.FC = () => {
         Esqueci minha senha
       </S.ForgotPasswordText>
 
-      <S.ProblemsText style={problemsTextAnimation}>
+      <S.ProblemsText
+        style={problemsTextAnimation}
+        onPress={() => {
+          navigation.navigate('Modals', {
+            screen: 'ProblemsToEntry',
+          });
+        }}
+      >
         Problemas para entrar?
       </S.ProblemsText>
     </S.Container>
