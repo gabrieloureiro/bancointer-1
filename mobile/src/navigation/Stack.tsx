@@ -11,6 +11,7 @@ import arrowLeftIcon from '../assets/icons/arrow-left.png';
 import Initial from '../screens/Initial';
 import Modals from './Modals';
 import SelectAccount from '../screens/SelectAccount';
+import ForgotPassword from '../screens/ForgotPassword';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -50,6 +51,14 @@ const Stack: React.FC = () => (
           headerLeftContainerStyle: {
             marginLeft: 16,
           },
+        }}
+      />
+
+      <Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
+        options={{
+          headerShown: false,
         }}
       />
 

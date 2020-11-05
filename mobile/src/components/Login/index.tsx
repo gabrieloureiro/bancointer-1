@@ -111,7 +111,12 @@ const Login: React.FC = () => {
 
       <OrangeButton onPress={openLogin}>Entrar</OrangeButton>
 
-      <S.ForgotPasswordText style={forgotPasswordTextAnimation}>
+      <S.ForgotPasswordText
+        style={forgotPasswordTextAnimation}
+        onPress={() => {
+          navigation.navigate('ForgotPassword');
+        }}
+      >
         Esqueci minha senha
       </S.ForgotPasswordText>
 
