@@ -1,3 +1,4 @@
+import './src/config/yup';
 import React from 'react';
 
 import { StatusBar } from 'expo-status-bar';
