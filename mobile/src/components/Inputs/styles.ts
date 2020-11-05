@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native';
+import { TextInputMask } from 'react-native-masked-text';
 
 export const Container = styled.View`
   width: 100%;
@@ -29,6 +30,20 @@ export const InputWrapper = styled.View`
 `;
 
 export const Input = styled.TextInput.attrs(props => ({
+  selectionColor: props.theme.colors.primary_light,
+}))`
+  width: 100%;
+  height: 49px;
+  background: ${props => props.theme.colors.light_gray_bg};
+  border-radius: 8px;
+  padding: 0 16px;
+
+  font-family: ${props => props.theme.fonts.medium};
+  color: ${props => props.theme.colors.text_input};
+  font-size: 15px;
+`;
+
+export const InputMask = styled(TextInputMask).attrs(props => ({
   selectionColor: props.theme.colors.primary_light,
 }))`
   width: 100%;
