@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import { Image, TextInput } from 'react-native';
+import { Image, TextInput, Keyboard } from 'react-native';
 
 import { FormHandles } from '@unform/core';
 import { useNavigation } from '@react-navigation/native';
@@ -171,6 +171,7 @@ const ForgotPassword: React.FC = () => {
           returnKeyType="send"
           blurOnSubmit={false}
           onSubmitEditing={() => {
+            Keyboard.dismiss();
             formRef.current?.submitForm();
           }}
         />
