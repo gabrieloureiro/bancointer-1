@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ScrollView } from 'react-native';
+import { Image } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -17,41 +17,44 @@ const Initial = (): JSX.Element => {
   const navigation = useNavigation();
 
   return (
-    <ScrollView keyboardShouldPersistTaps="handled">
-      <S.Container>
-        <S.LogoBg>
-          <Image source={logo} />
-        </S.LogoBg>
+    <S.Container
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={{
+        paddingBottom: 15,
+      }}
+    >
+      <S.LogoBg>
+        <Image source={logo} />
+      </S.LogoBg>
 
-        <S.Cards>
-          <Login />
+      <S.Cards>
+        <Login />
 
-          <Isafe />
+        <Isafe />
 
-          <S.Card>
-            <Image source={interpagIcon} />
+        <S.Card>
+          <Image source={interpagIcon} />
 
-            <S.Wrapper>
-              <S.IconWrapper
-                onPress={() => navigation.navigate('Modals', { screen: 'Pay' })}
-              >
-                <Image source={payIcon} />
-                <S.IconLabel>Pagar</S.IconLabel>
-              </S.IconWrapper>
+          <S.Wrapper>
+            <S.IconWrapper
+              onPress={() => navigation.navigate('Modals', { screen: 'Pay' })}
+            >
+              <Image source={payIcon} />
+              <S.IconLabel>Pagar</S.IconLabel>
+            </S.IconWrapper>
 
-              <S.IconWrapper
-                onPress={() => {
-                  navigation.navigate('Modals', { screen: 'Receive' });
-                }}
-              >
-                <Image source={receiveIcon} />
-                <S.IconLabel>Receber</S.IconLabel>
-              </S.IconWrapper>
-            </S.Wrapper>
-          </S.Card>
-        </S.Cards>
-      </S.Container>
-    </ScrollView>
+            <S.IconWrapper
+              onPress={() => {
+                navigation.navigate('Modals', { screen: 'Receive' });
+              }}
+            >
+              <Image source={receiveIcon} />
+              <S.IconLabel>Receber</S.IconLabel>
+            </S.IconWrapper>
+          </S.Wrapper>
+        </S.Card>
+      </S.Cards>
+    </S.Container>
   );
 };
 
