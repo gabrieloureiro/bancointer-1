@@ -48,10 +48,9 @@ const Input: React.ForwardRefRenderFunction<TextInput, InputProps> = (
     registerField<string>({
       name: fieldName,
       ref: inputValueRef.current,
-      path: 'value',
 
-      getValue: ref => {
-        return rawValue || (ref.value as string);
+      getValue: input => {
+        return rawValue || input.value;
       },
     });
   }, [registerField, fieldName, rawValue]);
