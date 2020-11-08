@@ -10,18 +10,32 @@ import {
   Extrapolate,
 } from 'react-native-reanimated';
 
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/mobile';
+
+import * as Yup from 'yup';
+
 import UserInfo from '../UserInfo';
 import OrangeButton from '../OrangeButton';
 
+import getValidationErrors from '../../utils/getValidationErrors';
+
 import * as S from './styles';
 
-const Login: React.FC = () => {
-  const inputWrapperMarginTop = useSharedValue(-75);
+type SubmitFormData = {
+  password: string;
+};
 
-  const navigation = useNavigation();
+const Login: React.FC = () => {
   const inputRef = useRef<TextInput>(null);
+  const formRef = useRef<FormHandles>(null);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const navigation = useNavigation();
+
+  const inputWrapperMarginTop = useSharedValue(-75);
 
   const openLogin = useCallback(() => {
     setIsOpen(true);
@@ -40,9 +54,15 @@ const Login: React.FC = () => {
   const closeLogin = useCallback(() => {
     setIsOpen(false);
 
-    inputWrapperMarginTop.value = withTiming(-75, {
-      duration: 500,
-    });
+    inputWrapperMarginTop.value = withTiming(
+      -75,
+      {
+        duration: 500,
+      },
+      () => {
+        formRef.current?.setErrors({});
+      },
+    );
   }, [inputWrapperMarginTop]);
 
   const handlerBackButton = useCallback(() => {
@@ -54,6 +74,39 @@ const Login: React.FC = () => {
 
     return false;
   }, [isOpen, closeLogin]);
+
+  const handleSubmit = useCallback(async (data: SubmitFormData) => {
+    setLoading(true);
+    formRef.current?.setErrors({});
+
+    try {
+      const schema = Yup.object().shape({
+        password: Yup.string().required(),
+      });
+
+      await schema.validate(data, { abortEarly: false });
+
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErrors(err);
+
+        formRef.current?.setErrors(errors);
+        inputRef.current?.focus();
+      }
+    }
+  }, []);
+
+  const activeTimeoutToSubmit = useCallback(
+    (data: SubmitFormData) => {
+      setLoading(true);
+
+      setTimeout(() => handleSubmit(data), 1500);
+    },
+    [handleSubmit],
+  );
 
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', handlerBackButton);
@@ -98,18 +151,30 @@ const Login: React.FC = () => {
       />
 
       <S.InputWrapper style={inputWrapperAnimation}>
-        <S.Label>Senha</S.Label>
-        <S.Input
-          ref={inputRef}
-          placeholder="Senha"
-          keyboardType="default"
-          autoCapitalize="none"
-          returnKeyType="join"
-          secureTextEntry
-        />
+        <Form ref={formRef} onSubmit={activeTimeoutToSubmit}>
+          <S.Input
+            secureTextEntry
+            ref={inputRef}
+            name="password"
+            label="Senha"
+            placeholder="Senha"
+            hasNext={false}
+            autoCapitalize="none"
+            keyboardType="default"
+            returnKeyType="send"
+            onSubmitEditing={() => {
+              formRef.current?.submitForm();
+            }}
+          />
+        </Form>
       </S.InputWrapper>
 
-      <OrangeButton onPress={openLogin}>Entrar</OrangeButton>
+      <OrangeButton
+        isLoading={loading}
+        onPress={() => (isOpen ? formRef.current?.submitForm() : openLogin())}
+      >
+        Entrar
+      </OrangeButton>
 
       <S.ForgotPasswordText
         style={forgotPasswordTextAnimation}
