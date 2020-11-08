@@ -6,6 +6,7 @@ import Input from '../Input';
 type InputMaskProps = TextInputMaskProps & {
   label?: string;
   name: string;
+  hasNext?: boolean;
 };
 
 const InputMask: React.ForwardRefRenderFunction<

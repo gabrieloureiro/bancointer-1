@@ -1,9 +1,18 @@
 import styled, { css } from 'styled-components/native';
 import { TextInputMask } from 'react-native-masked-text';
 
-export const Container = styled.View`
+type ContainerProps = {
+  hasNext: boolean;
+};
+
+export const Container = styled.View<ContainerProps>`
   width: 100%;
-  margin-bottom: 30px;
+
+  ${props =>
+    props.hasNext &&
+    css`
+      margin-bottom: 30px;
+    `}
 `;
 
 type LabelProps = {

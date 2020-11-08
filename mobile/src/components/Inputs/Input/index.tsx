@@ -18,6 +18,7 @@ type InputProps = TextInputProps & {
   name: string;
   onChangeText?: (text: string) => void;
   rawValue?: string;
+  hasNext?: boolean;
 };
 
 type InputValueRef = {
@@ -25,7 +26,7 @@ type InputValueRef = {
 };
 
 const Input: React.ForwardRefRenderFunction<TextInput, InputProps> = (
-  { name, label, onChangeText, rawValue = '', ...rest },
+  { name, label, hasNext = true, onChangeText, rawValue = '', ...rest },
   ref,
 ) => {
   const { registerField, fieldName, defaultValue = '', error } = useField(name);
@@ -56,7 +57,7 @@ const Input: React.ForwardRefRenderFunction<TextInput, InputProps> = (
   }, [registerField, fieldName, rawValue]);
 
   return (
-    <S.Container>
+    <S.Container hasNext={hasNext}>
       <S.Label isFocused={isFocused}>{label}</S.Label>
 
       <S.InputWrapper>
