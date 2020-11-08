@@ -22,7 +22,7 @@ import alertIcon from '../../assets/icons/alert.png';
 import * as S from './styles';
 
 const Isafe: React.FC = () => {
-  const isafeIconWidth = useSharedValue(122);
+  const isafeIconWidth = useSharedValue(126);
   const codeOpacity = useSharedValue(0);
 
   const alertWrapperMarginTop = useSharedValue(-35);
@@ -66,7 +66,7 @@ const Isafe: React.FC = () => {
 
     isafeIconWidth.value = delay(
       300,
-      withTiming(122, {
+      withTiming(126, {
         duration: 500,
       }),
     );
@@ -95,9 +95,11 @@ const Isafe: React.FC = () => {
 
   const isafeIconAnimation = useAnimatedStyle(() => ({
     width: isafeIconWidth.value,
+    height: interpolate(isafeIconWidth.value, [126, 59], [40, 18]),
+    top: `${interpolate(isafeIconWidth.value, [126, 59], [50, 0])}%`,
     transform: [
       {
-        translateY: interpolate(isafeIconWidth.value, [122, 59], [15, -10]),
+        translateY: interpolate(isafeIconWidth.value, [126, 59], [-20, 0]),
       },
     ],
   }));
@@ -160,7 +162,7 @@ const Isafe: React.FC = () => {
       </S.Wrapper>
 
       <S.WrapperAlert style={alertWrapperAnimation}>
-        <Image source={alertIcon} />
+        <S.AlertIcon source={alertIcon} />
         <S.AlertText>
           O Banco Inter nunca pede o código do seu i-safe por e-mail, SMS ou
           telefone.

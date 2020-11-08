@@ -25,8 +25,7 @@ export const LeftSide = styled.View`
 `;
 
 export const Image = styled(Animated.Image)`
-  /* transform: translateY(15px); */
-  /* width: 59px; */
+  position: absolute;
 `;
 
 export const IconWrapper = styled.TouchableOpacity`
@@ -41,6 +40,7 @@ export const IconLabel = styled.Text`
 `;
 
 export const Code = styled(Animated.View)`
+  margin-top: auto;
   justify-content: space-between;
   width: 100%;
   max-width: 200px;
@@ -76,14 +76,21 @@ export const RedBar = styled(Animated.View)`
 `;
 
 export const WrapperAlert = styled(Animated.View)`
-  flex-direction: row;
+  position: relative;
+  justify-content: center;
   align-items: center;
 `;
 
+export const AlertIcon = styled.Image`
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-10.5px);
+`;
+
 export const AlertText = styled.Text`
-  margin-left: 10px;
   text-align: center;
-  width: 240px;
+  width: 82%;
 
   font-family: ${props => props.theme.fonts.medium};
   font-size: 13px;
