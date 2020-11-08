@@ -1,7 +1,6 @@
 import './src/config/yup';
 import React from 'react';
 
-import { StatusBar } from 'expo-status-bar';
 import { AppLoading } from 'expo';
 
 import {
@@ -16,6 +15,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme/default';
 
 import Stack from './src/navigation/Stack';
+import CustomStatusBar from './src/components/CustomStatusBar';
 
 const App = (): JSX.Element => {
   const [fontsLoaded] = useFonts({
@@ -28,7 +28,7 @@ const App = (): JSX.Element => {
   return fontsLoaded ? (
     <ThemeProvider theme={theme}>
       <Stack />
-      <StatusBar backgroundColor="" />
+      <CustomStatusBar />
     </ThemeProvider>
   ) : (
     <AppLoading />
