@@ -1,6 +1,8 @@
 import React from 'react';
 import { GestureResponderEvent, TouchableOpacityProps } from 'react-native';
 
+import { useAccount } from '../../hooks/accounts';
+
 import * as S from './styles';
 
 type UserInfoProps = TouchableOpacityProps & {
@@ -9,13 +11,19 @@ type UserInfoProps = TouchableOpacityProps & {
 };
 
 const UserInfo: React.FC<UserInfoProps> = ({ buttonText, ...rest }) => {
+  const { currentAccount } = useAccount();
+
   return (
     <S.Container>
-      <S.Avatar source={{ uri: 'https://github.com/maurodesouza.png' }} />
+      <S.Avatar
+        source={{
+          uri: `https://github.com/${currentAccount?.githubProfile}.png`,
+        }}
+      />
 
       <S.Info>
-        <S.InfoName>Mauro Antonio Aires de Souza Junior</S.InfoName>
-        <S.InfoAgency>1234567-8</S.InfoAgency>
+        <S.InfoName>{currentAccount?.name}</S.InfoName>
+        <S.InfoAgency>{currentAccount?.account}</S.InfoAgency>
       </S.Info>
 
       <S.ChangeButton {...rest}>
