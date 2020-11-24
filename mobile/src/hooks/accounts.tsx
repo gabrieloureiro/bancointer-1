@@ -23,33 +23,19 @@ const AccountContext = createContext<AccountContextData>(
   {} as AccountContextData,
 );
 
-const devProfile: AccountData[] = [
-  {
-    id: Random.getRandomBytes(12).join(''),
-    name: 'Mauro Antonio Aires de Souza',
-    account: '1234567-8',
-    githubProfile: 'maurodesouza',
-    password: '123456',
-  },
-  {
-    id: Random.getRandomBytes(12).join(''),
-    name: 'Diego Fernandes',
-    account: '8765432-1',
-    githubProfile: 'diego3g',
-    password: '123456',
-  },
-  {
-    id: Random.getRandomBytes(12).join(''),
-    name: 'Willian Justen',
-    account: '1231233-2',
-    githubProfile: 'willianjusten',
-    password: '123456',
-  },
-];
+const initialProfile: AccountData = {
+  id: Random.getRandomBytes(12).join(''),
+  name: 'Mauro Antonio Aires de Souza',
+  account: '1234567-8',
+  githubProfile: 'maurodesouza',
+  password: '123456',
+};
 
 const AccountProvider: React.FC = ({ children }) => {
-  const [accounts, setAccounts] = useState<AccountData[]>(devProfile);
-  const [currentAccount, setCurrentAccount] = useState<CurrentData>(undefined);
+  const [accounts, setAccounts] = useState<AccountData[]>([initialProfile]);
+  const [currentAccount, setCurrentAccount] = useState<CurrentData>(
+    initialProfile,
+  );
 
   const addAccount = useCallback((accoundData: Omit<AccountData, 'id'>) => {
     const newAccount = {
