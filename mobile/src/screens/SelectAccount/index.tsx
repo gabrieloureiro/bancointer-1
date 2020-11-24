@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { TouchableWithoutFeedback, Alert, View } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useIsFocused } from '@react-navigation/native';
 
 import { useAccount } from '../../hooks/accounts';
 import Account from './Account';
@@ -12,6 +12,7 @@ const SelectAccount: React.FC = () => {
   const navigation = useNavigation();
 
   const { accounts } = useAccount();
+  const isFocused = useIsFocused();
 
   const navigateNewAccountScreen = useCallback(() => {
     if (accounts.length < 3) navigation.navigate('NewAccount');
@@ -21,6 +22,21 @@ const SelectAccount: React.FC = () => {
         'Você chegou ao numero máximo de 3 contas cadastradas!',
       );
   }, [accounts.length, navigation]);
+
+  useEffect(() => {
+    if (isFocused && !accounts.length) {
+      Alert.alert(
+        '',
+        'Você não possui nenhuma conta cadastrada, cadastre uma para poder fazer o seu login',
+        [
+          {
+            text: 'Criar conta',
+            onPress: () => navigation.navigate('NewAccount'),
+          },
+        ],
+      );
+    }
+  }, [accounts, navigation, isFocused]);
 
   return accounts.length ? (
     <S.Container>
