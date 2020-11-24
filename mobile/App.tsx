@@ -14,6 +14,8 @@ import {
 import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme/default';
 
+import { AccountProvider } from './src/hooks/accounts';
+
 import Stack from './src/navigation/Stack';
 import CustomStatusBar from './src/components/CustomStatusBar';
 
@@ -27,7 +29,10 @@ const App = (): JSX.Element => {
 
   return fontsLoaded ? (
     <ThemeProvider theme={theme}>
-      <Stack />
+      <AccountProvider>
+        <Stack />
+      </AccountProvider>
+
       <CustomStatusBar />
     </ThemeProvider>
   ) : (
