@@ -10,7 +10,7 @@ import {
   Extrapolate,
 } from 'react-native-reanimated';
 
-import { FormHandles } from '@unform/core';
+import { FormHandles, SubmitHandler, FormHelpers } from '@unform/core';
 import { Form } from '@unform/mobile';
 
 import * as Yup from 'yup';
@@ -21,6 +21,7 @@ import OrangeButton from '../OrangeButton';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import * as S from './styles';
+import { useAccount } from '../../hooks/accounts';
 
 type SubmitFormData = {
   password: string;
@@ -34,6 +35,7 @@ const Login: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
+  const { currentAccount } = useAccount();
 
   const inputWrapperMarginTop = useSharedValue(-75);
 
@@ -61,6 +63,7 @@ const Login: React.FC = () => {
       },
       () => {
         formRef.current?.setErrors({});
+        formRef.current?.clearField('password');
       },
     );
   }, [inputWrapperMarginTop]);
@@ -75,35 +78,49 @@ const Login: React.FC = () => {
     return false;
   }, [isOpen, closeLogin]);
 
-  const handleSubmit = useCallback(async (data: SubmitFormData) => {
-    setLoading(true);
-    formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async (data: SubmitFormData, { reset }: FormHelpers) => {
+      setLoading(true);
+      formRef.current?.setErrors({});
 
-    try {
-      const schema = Yup.object().shape({
-        password: Yup.string().required(),
-      });
+      try {
+        const schema = Yup.object().shape({
+          password: Yup.string()
+            .test(
+              'Password Text',
+              'Senha inválida',
+              value => value === currentAccount?.password,
+            )
+            .required(),
+        });
 
-      await schema.validate(data, { abortEarly: false });
+        await schema.validate(data, { abortEarly: false });
 
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
+        setLoading(false);
+        navigation.navigate('Dashboard');
+      } catch (err) {
+        setLoading(false);
 
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
+        reset({
+          password: '',
+        });
 
-        formRef.current?.setErrors(errors);
-        inputRef.current?.focus();
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
+
+          formRef.current?.setErrors(errors);
+          inputRef.current?.focus();
+        }
       }
-    }
-  }, []);
+    },
+    [navigation, currentAccount],
+  );
 
-  const activeTimeoutToSubmit = useCallback(
-    (data: SubmitFormData) => {
+  const activeTimeoutToSubmit: SubmitHandler<SubmitFormData> = useCallback(
+    (data, helpers) => {
       setLoading(true);
 
-      setTimeout(() => handleSubmit(data), 1500);
+      setTimeout(() => handleSubmit(data, helpers), 1500);
     },
     [handleSubmit],
   );
