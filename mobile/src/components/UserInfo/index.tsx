@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { GestureResponderEvent, TouchableOpacityProps } from 'react-native';
 
 import { useAccount } from '../../hooks/accounts';
+import getFirstLetterOfName from '../../utils/getFirstLettersOfName';
 
 import * as S from './styles';
 
@@ -11,15 +12,29 @@ type UserInfoProps = TouchableOpacityProps & {
 };
 
 const UserInfo: React.FC<UserInfoProps> = ({ buttonText, ...rest }) => {
+  const [isValidImageUrl, setIsValidImageUrl] = useState(true);
   const { currentAccount } = useAccount();
+
+  useEffect(() => {
+    setIsValidImageUrl(true);
+  }, [currentAccount]);
 
   return (
     <S.Container>
-      <S.Avatar
-        source={{
-          uri: `https://github.com/${currentAccount?.githubProfile}.png`,
-        }}
-      />
+      {isValidImageUrl ? (
+        <S.Avatar
+          onError={() => setIsValidImageUrl(false)}
+          source={{
+            uri: `https://github.com/${currentAccount?.githubProfile}.png`,
+          }}
+        />
+      ) : (
+        <S.NoAvatar>
+          <S.NoAvatarText>
+            {getFirstLetterOfName(currentAccount?.name as string)}
+          </S.NoAvatarText>
+        </S.NoAvatar>
+      )}
 
       <S.Info>
         <S.InfoName>{currentAccount?.name}</S.InfoName>

@@ -11,6 +11,27 @@ export const Avatar = styled.Image`
   border-radius: 100px;
   margin-right: 16px;
   flex-shrink: 0;
+
+  background: ${props => props.theme.colors.light_gray_complement};
+`;
+
+export const NoAvatar = styled.View`
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  margin-right: 16px;
+  flex-shrink: 0;
+
+  align-items: center;
+  justify-content: center;
+  background: ${props => props.theme.colors.light_gray_complement};
+`;
+
+export const NoAvatarText = styled.Text`
+  color: ${props => props.theme.colors.white};
+  text-transform: uppercase;
+  font-family: ${props => props.theme.fonts.regular};
+  font-size: 17px;
 `;
 
 export const Info = styled.View`
