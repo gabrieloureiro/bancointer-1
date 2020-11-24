@@ -13,6 +13,7 @@ import Modals from './Modals';
 import SelectAccount from '../screens/SelectAccount';
 import ForgotPassword from '../screens/ForgotPassword';
 import NewAccount from '../screens/NewAccount';
+import Dashboard from '../screens/Dashboard';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -66,6 +67,14 @@ const Stack: React.FC = () => (
       <Screen
         name="NewAccount"
         component={NewAccount}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Screen
+        name="Dashboard"
+        component={Dashboard}
         options={{
           headerShown: false,
         }}
