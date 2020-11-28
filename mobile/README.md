@@ -1,5 +1,5 @@
 <div align="center" id="top">
-  <img width="600" src="./.github/hero.png" alt="Bancointer" />
+  <img width="1000" src="./.github/hero.png" alt="Bancointer" />
 
   &#xa0;
 
