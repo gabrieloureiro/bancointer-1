@@ -1,5 +1,5 @@
 <div align="center" id="top">
-  <img src="./.github/hero.png" alt="Bancointer" />
+  <img width="600" src="./.github/hero.png" alt="Bancointer" />
 
   &#xa0;
 
@@ -45,27 +45,23 @@ Esse projeto é um UI clone da antiga interface de login do Banco Inter!
 
 As principais ferramentas usadas na construção desse projeto:
 
-<a style="margin-right: 16px" href="https://expo.io">
-  <img style="filter: invert(6%) sepia(18%) saturate(7492%) hue-rotate(227deg) brightness(87%) contrast(116%);" width="50" title="Expo" alt="Expo" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/expo.svg">
-</a>
+<a href="https://expo.io">
+  <img width="50" title="Expo" alt="Expo" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/expo.svg">
+</a> &#xa0; &#xa0;
 
-<a style="margin-right: 16px" href="https://reactnavigation.org">
+<a href="https://reactnavigation.org">
   <img width="50" title="React Navigation" alt="React Navigation" src="https://reactnavigation.org/img/spiro.svg">
-</a>
+</a> &#xa0; &#xa0;
 
-<a style="margin-right: 16px" href="https://www.typescriptlang.org">
+<a href="https://www.typescriptlang.org">
   <img width="50" title="Typescript" alt="Typescript" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png">
-</a>
+</a> &#xa0; &#xa0;
 
-<a style="margin-right: 16px" href="https://styled-components.com">
-  <img style="filter: invert(59%) sepia(10%) saturate(2364%) hue-rotate(291deg) brightness(92%) contrast(86%);" width="50" title="Styled components" alt="Styled components" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/styled-components.svg">
-</a>
-
-<a style="margin-right: 16px" href="https://eslint.org">
+<a href="https://eslint.org">
   <img  width="50" title="Eslint" alt="Eslint" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/eslint/eslint.png">
-</a>
+</a> &#xa0; &#xa0;
 
-<a style="margin-right: 16px" href="https://prettier.io">
+<a href="https://prettier.io">
   <img width="50" title="Prettier" alt="Prettier" src="https://prettier.io/icon.png">
 </a>
 
@@ -77,6 +73,7 @@ As principais ferramentas usadas na construção desse projeto:
 
   <br>
 
+  * [Styled components](https://styled-components.com)
   * [React native reanimated](https://docs.swmansion.com/react-native-reanimated/)
   * [React native qrcode svg](https://github.com/awesomejerry/react-native-qrcode-svg)
   * [React native masked text](https://github.com/benhurott/react-native-masked-text)
