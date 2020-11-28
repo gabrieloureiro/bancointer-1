@@ -36,7 +36,27 @@ Esse projeto é um UI clone da antiga interface de login do Banco Inter!
 <br>
 
 <div align="center">
-  <img width="300" src="./.github/app.gif" alt="Bancointer" />
+  <img height="350" src="./.github/app.gif" alt="App gif" />
+  <img height="350" src="./.github/login.png" alt="Login screen" />
+  <img height="350" src="./.github/pay.png" alt="Pay screen" />
+</div>
+
+<br>
+<br>
+
+<div align="center">
+  <img height="350" src="./.github/receive.png" alt="Receive screen" />
+  <img height="350" src="./.github/select.png" alt="Select account screen" />
+  <img height="350" src="./.github/create.png" alt="Create account screen" />
+</div>
+
+<br>
+<br>
+
+<div align="center">
+  <img height="350" src="./.github/forgot.png" alt="Forgot password screen" />
+  <img height="350" src="./.github/problems.png" alt="Problems to entry screen" />
+  <img height="350" src="./.github/madeby.png" alt="Made by screen" />
 </div>
 
 <br>
